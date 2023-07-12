@@ -8,5 +8,39 @@
 </head>
 <body>
   <div class="books-container"></div>
+
+  <form action="#" method="post">
+    <div class="form-field">
+      <label>
+        Book title:
+        <input type="text" name="book-title" required>
+      </label>
+    </div>
+
+    <div class="form-field">
+      <label>
+        Book author:
+        <input type="text" name="book-author" required>
+      </label>
+    </div>
+
+    <div class="form-field">
+      <label>
+        Book pages:
+        <input type="number" name="book-pages" required>
+      </label>
+    </div>
+
+    <div class="form-field">
+      <label>
+        <input type="checkbox" name="book-has-read">
+        Has read?
+      </label>
+    </div>
+
+    <div class="form-action">
+      <button type="submit">Add Book</button>
+    </div>
+  </form>
 </body>
 </html>
