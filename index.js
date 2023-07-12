@@ -27,6 +27,31 @@ function showBooks() {
     })
 }
 
+const bookTitleInput = document.querySelector('input[name="book-title"]')
+const bookAuthorInput = document.querySelector('input[name="book-author"]')
+const bookPagesInput = document.querySelector('input[name="book-pages"]')
+const bookHasReadInput = document.querySelector('input[name="book-has-read"]')
+const addBookBtn = document.querySelector('button[type="submit"]')
+
+addBookBtn.addEventListener("click", e => {
+    e.preventDefault()
+
+    let book = new Book(bookTitleInput.value, bookAuthorInput.value,
+                        bookPagesInput.value, bookHasReadInput.checked)
+
+    // Reset inputs field
+    bookTitleInput.value = ""
+    bookAuthorInput.value = ""
+    bookPagesInput.value = ""
+    bookHasReadInput.checked = false
+
+    addBookToLibrary(book)
+
+    // Refresh the page
+    showBooks()
+})
+
+// Main driver script
 let bookOne = new Book("Programming Ruby", "Dave Thomas", 111, true)
 let bookTwo = new Book("Refactoring", "Martin Fowler", 700, false)
 let bookThree = new Book("The Rails way", "Obie Femandez", 1000, false)
