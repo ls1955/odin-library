@@ -27,7 +27,7 @@ function showBooks() {
     })
 }
 
-let bookOne = new Book("Programming Ruby", "Dave Thomas", "111", true)
+let bookOne = new Book("Programming Ruby", "Dave Thomas", 111, true)
 let bookTwo = new Book("Refactoring", "Martin Fowler", 700, false)
 let bookThree = new Book("The Rails way", "Obie Femandez", 1000, false)
 
