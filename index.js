@@ -12,6 +12,7 @@ Book.prototype.info = function() {
 
 const library = []
 const booksContainer = document.querySelector(".books-container")
+let bookDeleteBtns = null
 
 function addBookToLibrary(book) {
     library.push(book)
@@ -20,6 +21,7 @@ function addBookToLibrary(book) {
 function showBooks() {
     booksContainer.innerHTML = ""
 
+    // Show books in booksContainer
     library.forEach((book, index) => {
         const bookCard = document.createElement("div")
         bookCard.innerText = book.info()
@@ -31,6 +33,18 @@ function showBooks() {
 
         booksContainer.insertAdjacentElement("beforeend", bookCard)
         booksContainer.insertAdjacentElement("beforeend", bookDeleteBtn)
+    })
+
+    // Refresh and redefine event listeners of book delete buttons
+    bookDeleteBtns = document.querySelectorAll(".book-delete-button")
+
+    bookDeleteBtns.forEach (button => {
+        button.addEventListener("click", () => {
+            library.splice(button.dataset.bookIndex, 1)
+
+            // Refresh the page
+            showBooks()
+        })
     })
 }
 
