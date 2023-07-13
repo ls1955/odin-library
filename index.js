@@ -20,10 +20,17 @@ function addBookToLibrary(book) {
 function showBooks() {
     booksContainer.innerHTML = ""
 
-    library.forEach(book => {
+    library.forEach((book, index) => {
         const bookCard = document.createElement("div")
         bookCard.innerText = book.info()
+
+        const bookDeleteBtn = document.createElement("button")
+        bookDeleteBtn.innerText = "Delete"
+        bookDeleteBtn.classList.add("book-delete-button")
+        bookDeleteBtn.dataset.bookIndex = index
+
         booksContainer.insertAdjacentElement("beforeend", bookCard)
+        booksContainer.insertAdjacentElement("beforeend", bookDeleteBtn)
     })
 }
 
