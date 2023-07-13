@@ -12,7 +12,6 @@ Book.prototype.info = function() {
 
 const library = []
 const booksContainer = document.querySelector(".books-container")
-let bookDeleteBtns = null
 
 function addBookToLibrary(book) {
     library.push(book)
@@ -36,7 +35,7 @@ function showBooks() {
     })
 
     // Refresh and redefine event listeners of book delete buttons
-    bookDeleteBtns = document.querySelectorAll(".book-delete-button")
+    let bookDeleteBtns = document.querySelectorAll(".book-delete-button")
 
     bookDeleteBtns.forEach (button => {
         button.addEventListener("click", () => {
