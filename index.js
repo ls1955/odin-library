@@ -30,8 +30,14 @@ function showBooks() {
         bookDeleteBtn.classList.add("book-delete-button")
         bookDeleteBtn.dataset.bookIndex = index
 
+        const bookHasReadToggleBtn = document.createElement("button")
+        bookHasReadToggleBtn.innerText = book.hasRead ? "Unread" : "Read"
+        bookHasReadToggleBtn.classList.add("book-has-read-toggle-button")
+        bookHasReadToggleBtn.dataset.bookIndex = index
+
         booksContainer.insertAdjacentElement("beforeend", bookCard)
         booksContainer.insertAdjacentElement("beforeend", bookDeleteBtn)
+        booksContainer.insertAdjacentElement("beforeend", bookHasReadToggleBtn)
     })
 
     // Refresh and redefine event listeners of book delete buttons
@@ -40,6 +46,20 @@ function showBooks() {
     bookDeleteBtns.forEach (button => {
         button.addEventListener("click", () => {
             library.splice(button.dataset.bookIndex, 1)
+
+            // Refresh the page
+            showBooks()
+        })
+    })
+
+    // Refresh and redefine event listeners of book has read toggle buttons
+    let bookHasReadToggleBtns = document.querySelectorAll(".book-has-read-toggle-button")
+
+    bookHasReadToggleBtns.forEach(button => {
+        button.addEventListener("click", () => {
+            let bookIndex = button.dataset.bookIndex
+
+            library[bookIndex].hasRead = !library[bookIndex].hasRead
 
             // Refresh the page
             showBooks()
